@@ -54,6 +54,8 @@ int main(int argc, char ** argv)
     if (make_kernel_user) {
       cv::Mat filtered = processor.convolutionFilter(input);
       cv::imwrite(prefix + "_filtered.png", filtered);
+      cv::Mat filtered_manual = processor.convolutionFilterManual(input);
+      cv::imwrite(prefix + "_filtered_manual.png", filtered_manual);
     }
     std::cout << "Wrote output images with prefix: " << prefix << std::endl;
   }

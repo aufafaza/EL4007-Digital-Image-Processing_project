@@ -19,6 +19,7 @@ public:
   cv::Mat toGrayscale(const cv::Mat & input) const;
   cv::Mat gaussianBlur(const cv::Mat & input, int kernel_size = 5) const;
   cv::Mat convolutionFilter(const cv::Mat & input) const;
+  cv::Mat convolutionFilterManual(const cv::Mat & input) const;
   cv::Mat fourierTransform(const cv::Mat & input, bool shift = true) const;
 
 private: 

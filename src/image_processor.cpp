@@ -56,6 +56,65 @@ cv::Mat ImageProcessor::convolutionFilter(const cv::Mat & input) const
 
 }
 
+cv::Mat ImageProcessor::convolutionFilterManual(const cv::Mat & input) const
+{
+  if (input.empty()) {
+    throw std::invalid_argument("ImageProcessor::convolutionFilterManual: input image is empty");
+  }
+  if (kernel_.empty()) {
+    throw std::runtime_error("kernel is empty");
+  }
+  if (input.depth() != CV_8U) {
+    throw std::invalid_argument(
+      "ImageProcessor::convolutionFilterManual: only 8-bit images are supported");
+  }
+
+  cv::Mat kernel_f;
+  kernel_.convertTo(kernel_f, CV_32F);
+
+  const int kh = kernel_f.rows;
+  const int kw = kernel_f.cols;
+  const int anchor_y = kh / 2;
+  const int anchor_x = kw / 2;
+
+  const int rows = input.rows;
+  const int cols = input.cols;
+  const int channels = input.channels();
+
+  cv::Mat output = cv::Mat::zeros(input.size(), input.type());
+
+  for (int y = 0; y < rows; ++y) {
+    uchar * out_row = output.ptr<uchar>(y);
+
+    for (int x = 0; x < cols; ++x) {
+      for (int c = 0; c < channels; ++c) {
+        float sum = 0.0f;
+
+        for (int i = 0; i < kh; ++i) {
+          int sy = y + i - anchor_y;
+          if (sy < 0 || sy >= rows) {
+            continue;  // zero padding
+          }
+          const uchar * in_row = input.ptr<uchar>(sy);
+
+          for (int j = 0; j < kw; ++j) {
+            int sx = x + j - anchor_x;
+            if (sx < 0 || sx >= cols) {
+              continue;  // zero padding
+            }
+            float weight = kernel_f.at<float>(kh - 1 - i, kw - 1 - j);
+            sum += weight * static_cast<float>(in_row[sx * channels + c]);
+          }
+        }
+
+        out_row[x * channels + c] = cv::saturate_cast<uchar>(sum);
+      }
+    }
+  }
+
+  return output;
+}
+
 cv::Mat ImageProcessor::fourierTransform(const cv::Mat & input, bool shift) const
 {
   if (input.empty()) {
