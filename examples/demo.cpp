@@ -44,13 +44,17 @@ int main(int argc, char ** argv)
   }
   // cv::Mat gray = processor.toGrayscale(input);
   cv::Mat blurred = processor.gaussianBlur(input, 3);
-  cv::Mat filtered = processor.convolutionFilter(input); 
+  cv::Mat spectrum = processor.fourierTransform(input);
 
   if (argc > 2) {
     const std::string prefix = argv[2];
     // cv::imwrite(prefix + "_gray.png", gray);
     cv::imwrite(prefix + "_blur.png", blurred);
-    cv::imwrite(prefix + "_filtered.png", filtered); 
+    cv::imwrite(prefix + "_fft.png", spectrum);
+    if (make_kernel_user) {
+      cv::Mat filtered = processor.convolutionFilter(input);
+      cv::imwrite(prefix + "_filtered.png", filtered);
+    }
     std::cout << "Wrote output images with prefix: " << prefix << std::endl;
   }
 
