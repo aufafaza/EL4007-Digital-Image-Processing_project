@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.29 (TeX Live 2026/Arch Linux) (preloaded format=pdflatex 2026.7.11)  8 SEP 2026 06:59
+This is pdfTeX, Version 3.141592653-2.6-1.40.29 (TeX Live 2026/Arch Linux) (preloaded format=pdflatex 2026.7.11)  8 SEP 2026 07:05
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -401,11 +401,11 @@ Package pdftex.def Info: assets/kernel_size_comparison.png  used on input line
 png (PNG copy)>]
 ** WARNING: Ignoring useless \section in Appendix (line 214).
 LaTeX Font Info:    Font shape `OT1/pcr/m/it' in size <7> not available
-(Font)              Font shape `OT1/pcr/m/sl' tried instead on input line 260.
+(Font)              Font shape `OT1/pcr/m/sl' tried instead on input line 264.
 [4
 
 ] [5] [6]
-Underfull \hbox (badness 3108) in paragraph at lines 391--392
+Underfull \hbox (badness 3108) in paragraph at lines 395--396
 []\OT1/ptm/m/n/8 OpenCV De-vel-op-ment Team, ``Mak-ing your own lin-ear fil-ter
 s!,''
  []
@@ -433,7 +433,7 @@ L3 programming layer <2026-01-19>
 Here is how much of TeX's memory you used:
  5586 strings out of 469515
  83143 string characters out of 5470807
- 1187640 words of memory out of 5000000
+ 1201640 words of memory out of 5000000
  34185 multiletter control sequences out of 15000+600000
  668898 words of font info for 128 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
@@ -453,7 +453,7 @@ ist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texmf-dist/fonts/type1
 fb></usr/share/texmf-dist/fonts/type1/urw/courier/ucrro8a.pfb></usr/share/texmf
 -dist/fonts/type1/urw/times/utmb8a.pfb></usr/share/texmf-dist/fonts/type1/urw/t
 imes/utmr8a.pfb></usr/share/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on laporan_13524027.pdf (7 pages, 2244227 bytes).
+Output written on laporan_13524027.pdf (7 pages, 2244619 bytes).
 PDF statistics:
  129 PDF objects out of 1000 (max. 8388607)
  76 compressed objects within 1 object stream
