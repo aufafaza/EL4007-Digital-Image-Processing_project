@@ -1,37 +1,34 @@
 # simple_cv_lib
 
-A minimal OpenCV C++ library packaged as an `ament_cmake` package, built with `colcon`.
+A minimal OpenCV based C++ library packaged as an ament_cmake package, built with colcon.
 
 ## Contents
 
-- `simple_cv_lib::ImageProcessor` — grayscale conversion, Gaussian blur, and Canny edge
-  detection wrapped around OpenCV.
-- `demo` executable — runs the processor on a supplied image (or a synthetic one if none
-  is given) and optionally writes the results to disk.
+The `simple_cv_lib::ImageProcessor` class wraps the following operations around OpenCV:
 
-## Layout
+- `toGrayscale`: converts an image to single channel grayscale.
+- `gaussianBlur`: applies OpenCV's Gaussian blur with a configurable kernel size.
+- `convolutionFilter`: applies a user supplied kernel using OpenCV's `filter2D`.
+- `convolutionFilterManual`: a from scratch implementation of 2D convolution that does not use `filter2D`.
+- `fourierTransform`: computes the log magnitude Fourier spectrum of an image using OpenCV's `dft`.
 
-```
-simple_cv_lib/
-├── CMakeLists.txt
-├── package.xml
-├── include/simple_cv_lib/image_processor.hpp
-├── src/image_processor.cpp
-└── examples/demo.cpp
-```
+A `demo` executable exercises these methods on a supplied image, or on a synthetic image if none is given, and can write the results to disk.
 
 ## Dependencies
 
-- `ament_cmake` (buildtool)
+- ROS 2 (tested with Jazzy)
+- `colcon`
+- `ament_cmake` (buildtool dependency, provided by the ROS 2 distribution)
 - OpenCV (system dependency, resolved via rosdep as `OpenCV` in `package.xml`)
+- A C++17 compiler
 
 ## Build
 
-This package expects to live under a colcon workspace's `src/` directory:
+This package expects to live under a colcon workspace's `src` directory.
 
 ```bash
 mkdir -p ~/ros2_ws/src
-ln -s ~/simple_cv_lib ~/ros2_ws/src/simple_cv_lib   # or cp -r
+ln -s /path/to/this/repository ~/ros2_ws/src/simple_cv_lib
 
 cd ~/ros2_ws
 rosdep install --from-paths src --ignore-src -r -y
@@ -44,8 +41,18 @@ source install/setup.bash
 ```bash
 ros2 run simple_cv_lib demo
 
-./install/simple_cv_lib/lib/simple_cv_lib/demo path/to/input.jpg /tmp/out
+ros2 run simple_cv_lib demo path/to/input.jpg /tmp/out
 ```
+
+If no image path is given, the demo generates a synthetic input. If an output prefix is given as the second argument, the demo writes the blurred image and the Fourier spectrum image to disk using that prefix.
+
+On startup, the demo asks whether to build a custom convolution kernel:
+
+```
+make custom kernel?
+```
+
+Entering `0` skips this step. Entering `1` prompts for the kernel size, then each kernel coefficient in row major order, then a divisor to scale the kernel. If a custom kernel is built, the demo also writes the results of `convolutionFilter` and `convolutionFilterManual` applied with that kernel.
 
 ## Use the library from another ament_cmake package
 

@@ -26,10 +26,16 @@ int main(int argc, char ** argv)
 
   simple_cv_lib::ImageProcessor processor;
   if (make_kernel_user){
-    cv::Mat kernel = cv::Mat::zeros(3, 3, CV_32FC1);
+    std::cout << "kernel size (odd, e.g. 3, 9, 15): ";
+    int kernel_size;
+    std::cin >> kernel_size;
+    if (kernel_size % 2 == 0) {
+      kernel_size += 1;
+    }
+    cv::Mat kernel = cv::Mat::zeros(kernel_size, kernel_size, CV_32FC1);
 
-    for (int i = 0; i < 3; i++){
-      for (int j = 0; j < 3; j++){
+    for (int i = 0; i < kernel_size; i++){
+      for (int j = 0; j < kernel_size; j++){
           std::cout << "Kernel at " << i << ", " << j << ":";
           std::cin >> kernel.at<float>(i, j);
         }

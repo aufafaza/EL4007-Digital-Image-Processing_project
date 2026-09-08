@@ -1,0 +1,36 @@
+\relax 
+\citation{opencv-filter2d}
+\citation{opencv-dft}
+\@writefile{toc}{\contentsline {section}{\numberline {I}Theoretical Foundation}{1}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {I-A}}Linear Spatial Filtering}{1}{}\protected@file@percent }
+\newlabel{sec:theory-conv}{{\mbox  {I-A}}{1}{}{subsection.1.1}{}}
+\newlabel{eq:convolution}{{1}{1}{}{equation.1}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {I-B}}Discrete Fourier Transform}{1}{}\protected@file@percent }
+\newlabel{sec:theory-dft}{{\mbox  {I-B}}{1}{}{subsection.1.2}{}}
+\newlabel{eq:dft}{{2}{1}{}{equation.2}{}}
+\newlabel{eq:magnitude}{{3}{1}{}{equation.3}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {II}Experimental Results}{1}{}\protected@file@percent }
+\newlabel{sec:experiments}{{II}{1}{}{section.2}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {II-A}}Implementation}{1}{}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces Original 512$\times $512 test image (\texttt  {Lenna.png}).}}{2}{}\protected@file@percent }
+\newlabel{fig:lenna_original}{{1}{2}{}{figure.1}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {II-B}}Correctness of the Manual Convolution}{2}{}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces Result of \texttt  {convolutionFilter} (\texttt  {filter2D}-based) using the $15\times 15$ Gaussian kernel $K$.}}{2}{}\protected@file@percent }
+\newlabel{fig:lenna_filtered_opencv}{{2}{2}{}{figure.2}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces Result of \texttt  {convolutionFilterManual} using the same kernel $K$, visually indistinguishable from Fig.~\ref {fig:lenna_filtered_opencv}.}}{2}{}\protected@file@percent }
+\newlabel{fig:lenna_filtered_manual}{{3}{2}{}{figure.3}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {II-C}}Performance Comparison}{2}{}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {I}{\ignorespaces Average Runtime per Frame (512$\times $512$\times $3 image, $3\times 3$ kernel)}}{2}{}\protected@file@percent }
+\newlabel{tab:performance}{{I}{2}{}{table.1}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {II-D}}Fourier Spectrum}{2}{}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces Log-magnitude Fourier spectrum of \texttt  {Lenna.png}, quadrant-centered so the zero-frequency term appears at the middle of the image.}}{3}{}\protected@file@percent }
+\newlabel{fig:lenna_fft_spectrum}{{4}{3}{}{figure.4}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {II-E}}Effect of Kernel Size on Blur Strength}{3}{}\protected@file@percent }
+\newlabel{sec:kernel-sweep}{{\mbox  {II-E}}{3}{}{subsection.2.5}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5}{\ignorespaces Box-blur result on \texttt  {Lenna.png} for increasing kernel size $N$, using \texttt  {convolutionFilter}.}}{3}{}\protected@file@percent }
+\newlabel{fig:kernel_size_comparison}{{5}{3}{}{figure.5}{}}
+\@writefile{toc}{\contentsline {section}{Appendix}{4}{}\protected@file@percent }
+\bibcite{opencv-filter2d}{1}
+\bibcite{opencv-dft}{2}
+\@writefile{toc}{\contentsline {section}{References}{7}{}\protected@file@percent }
+\gdef \@abspage@last{7}
